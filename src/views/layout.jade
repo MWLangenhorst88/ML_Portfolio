@@ -7,7 +7,8 @@ html
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
     script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="./js/information.js")
+    link(rel='stylesheet', href='./stylesheets/style.css')
   body(class="#{bodyClass}")
     nav(class="navbar navbar-inverse navbar-fixed-top #{navbarClass}")
       div.container-fluid
@@ -18,11 +19,16 @@ html
             span(class="icon-bar")
             span(class="icon-bar")
           a(href="/")
-            img(src="#{headerLogo}" alt="Mark Langenhorst" class="#{imageClass}")
+            -if (title === 'Mark Langenhorst Portfolio'){
+              img(src="#{headerLogo}" alt="Mark Langenhorst" class="#{imageClass}")
+            -} else {
+              img(src="#{mainLogo}" alt="Mark Langenhorst" class="#{imageClass}")
+            -}
         div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
           ul(class="nav navbar-nav navbar-right")
             li: a(href="/portfolio") Portfolio
             li: a(href="/resume") Resume
+            li: a(href="/contact") Contact
             li: a(href="/darkMode" title="Toggle Dark Mode")
               img(src="#{dmBtn}")
       
@@ -30,7 +36,7 @@ html
       .container-fluid.gap
         block content
       
-  footer(class="#{bodyClass}")
+  footer(class="#{bodyClass} ")
     .left
       p All Rights Reserved
     

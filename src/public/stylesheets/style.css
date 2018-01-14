@@ -1,18 +1,23 @@
+@font-face {
+  font-family: "Aero Matics";
+  src: url('../fonts/Aero-Matics.TTF');
+}
 body{
-  font: 18px Helvetica, Arial, sans-serif;
+  font: 16px Helvetica, Arial, sans-serif;
 }
 h1{
   font: 40px "Aero Matics";
 }
-a{
-  color: #fff;
+h2{
+  font: 25px "Aero Matics";
+  padding-top: 25px;
 }
 footer{
   font: 14px Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  position: fixed;
   background: none;
   bottom: 0;
   width: 100%;
@@ -29,8 +34,13 @@ footer{
 .navbar-light .navbar-nav > li > a:hover {
     color: #000;
 }
-.navbar-inverse{
-  background-color: rgba(0,0,0,0);
+.navbar-dark{
+  background: url('../images/background_b.png');
+  border-radius: 0;
+  border: 0;
+}
+.navbar-light{
+  background: url('../images/background_w.png');
   border-radius: 0;
   border: 0;
 }
@@ -43,11 +53,17 @@ footer{
 .gap{
   margin-top: 100px;
 }
-body.dark, .light .burger span{
+.dark a, .light a{
+  color: #0094ff;
+}
+.dark a:hover, .light a:hover{
+  color: #0070c0;
+}
+.dark, .light .burger span{
   background: url('../images/background_b.png');
   color: #fff;
 }
-body.light, .dark .burger span{
+.light, .dark .burger span{
   background: url('../images/background_w.png');
   color: #222;
 }
@@ -79,7 +95,21 @@ body.light, .dark .burger span{
   font-style: italic;
 }
 .contain{
-  margin: 25px;
+  margin: 25px 150px;
+}
+.picture{
+  float: right;
+  border-radius: 50%;
+  height: 250px;
+}
+.image-placeholder{
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+.portfolio-image{
+  width: 200px;
+  margin: 15px;
 }
 .left, .social-media{
   padding-left: 15px;
@@ -103,12 +133,23 @@ body.light, .dark .burger span{
 .google:hover{
   background-color: #DC483C;
 }
+@media screen and (max-width: 1000px) {
+  .picture{
+    display: none;
+  }
+  .contain{
+    margin: 5px;
+  }
+}
 @media screen and (max-width: 525px) {
   footer{
     flex-direction: column;
   }
   .center{
     order: 3;
+  }
+  .contain{
+    margin: 5px;
   }
   .main_name{
     display: block;

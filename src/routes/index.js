@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const back = require('express-back');
 const router = express.Router();
+const portInfo = require('../public/js/portfolio.js');
 
 const randomString = [
   "Web Designer/Developer by day. Asleep by night.",
@@ -25,14 +26,17 @@ router.get('/', function(req, res, next) {
   renderView(req, res, next,
     'Mark Langenhorst Portfolio',
     'index',
+    '',
     pickString);
 });
 
 router.get('/portfolio', function(req, res, next) {
   let dmToggle = checkDarkMode(req, res, next);
+
   renderView(req, res, next,
     'Portfolio',
-    'portfolio');
+    'portfolio',
+    portInfo);
 });
 
 router.get('/resume', function(req, res, next) {
@@ -43,6 +47,14 @@ router.get('/resume', function(req, res, next) {
     'resume');
 });
 
+router.get('/contact', function(req, res, next) {
+  let dmToggle = checkDarkMode(req, res, next);
+
+  renderView(req, res, next,
+    'Contact',
+    'contact');
+});
+
 router.get('/darkMode', function(req, res, next) {
   // Generate random number up to 10
   const index = Math.floor((Math.random() * 9));
@@ -50,7 +62,7 @@ router.get('/darkMode', function(req, res, next) {
 
   pathArray = req.header('Referer').split('/');
   let prevTitle = '';
-  let pathString = '/';
+  let pathString = '';
 
   switch (pathArray[3]) {
     case 'resume':
@@ -60,11 +72,16 @@ router.get('/darkMode', function(req, res, next) {
 
     case 'portfolio':
       prevTitle = 'Portfolio';
-      pathString = 'resume';
+      pathString = 'portfolio';
+      break;
+
+    case 'contact':
+      prevTitle = 'Contact';
+      pathString = 'contact';
       break;
 
     default:
-      prevTitle = 'Dark Mode Toggled!';
+      prevTitle = 'Mark Langenhorst Portfolio';
       pathString = 'index';
       break;
   }
@@ -81,6 +98,7 @@ router.get('/darkMode', function(req, res, next) {
   renderView(req, res, next,
     prevTitle,
     pathString,
+    portInfo,
     pickString);
 });
 
@@ -110,17 +128,18 @@ function checkDarkMode(req, res, next) {
   return dmToggle;
 }
 
-function renderView(req, res, next, title, view, string){
+function renderView(req, res, next, title, view, pageInfo, string){
   let dmToggle = req.session;
 
   res.render(view, {
+    navbarClass: dmToggle.navbarClass,
     headerLogo: dmToggle.headerLogo,
-    imageClass: 'logo-s',
+    imageClass: 'logo',
+    bodyClass: dmToggle.bodyClass,
     mainLogo: dmToggle.mainLogo,
     title: title,
     randomString: string,
-    bodyClass: dmToggle.bodyClass,
-    navbarClass: dmToggle.navbarClass,
+    pageInfo: pageInfo,
     dmBtn: dmToggle.button,
     facebook: dmToggle.facebook,
     twitter: dmToggle.twitter,

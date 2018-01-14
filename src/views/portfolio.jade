@@ -2,5 +2,23 @@ extends layout
 
 block content
   .contain
+    img(src="./images/proPic.jpg").picture
     h1= title
-    a(href="/") 
+    p #{pageInfo.bio}
+    h2 Web Development Projects
+    p: a(href="http://www.chakota-trc.org" target="_blank") Chakota Therapeutic Riding Center
+    p: a(href="http://www.tranquilitydesign.net" target="_blank") Tranquility Design
+    p
+      a(href="http://www.clevergirloriginals.com" target="_blank") Clever Girl Originals
+      span  - Coming Soon
+    p
+      a(href="http://www.saintdominicbreese.org" target="_blank") Saint Dominic Church
+      span  - Under Internship at 
+        a(href="http://www.techknowsolutions.com" target="_blank") TechKnow Solutions, Inc.
+    h2 Graphic Design Projects
+    .image-placeholder
+      -each img in pageInfo.images
+        a(href="./images/portfolio/#{img}")
+          img(src="./images/portfolio/#{img}" class="portfolio-image" alt="Portfolio Image")
+    
+    
