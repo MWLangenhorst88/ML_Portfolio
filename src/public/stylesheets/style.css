@@ -1,17 +1,6 @@
 body{
   font: 18px Helvetica, Arial, sans-serif;
 }
-.dark, .light .burger span{
-  background: url('../images/background_b.png');
-  color: #fff;
-}
-.light, .dark .burger span{
-  background: url('../images/background_w.png');
-  color: #222;
-}
-.light .burger:hover, .dark .burger:hover{
-  background: none;
-}
 h1{
   font: 40px "Aero Matics";
 }
@@ -24,10 +13,9 @@ footer{
   justify-content: space-between;
   align-items: center;
   position: absolute;
+  background: none;
   bottom: 0;
-  background: #222;
   width: 100%;
-  color: #fff;
 }
 .navbar-dark .navbar-nav > li > a{
     color: #ddd;
@@ -36,7 +24,7 @@ footer{
     color: #fff;
 }
 .navbar-light .navbar-nav > li > a{
-    color: #222;
+    color: #555;
 }
 .navbar-light .navbar-nav > li > a:hover {
     color: #000;
@@ -54,6 +42,17 @@ footer{
 }
 .gap{
   margin-top: 100px;
+}
+body.dark, .light .burger span{
+  background: url('../images/background_b.png');
+  color: #fff;
+}
+body.light, .dark .burger span{
+  background: url('../images/background_w.png');
+  color: #222;
+}
+.light .burger:hover, .dark .burger:hover{
+  background: none;
 }
 .background-color{
   height: 100%;
@@ -118,9 +117,9 @@ footer{
     display: none;
   }
   .dark #bs-example-navbar-collapse-1{
-    background: #333;
+    background: url('../images/background_b.png');
   }
   .light #bs-example-navbar-collapse-1{
-    background: #eee;
+    background: url('../images/background_w.png');
   }
 }

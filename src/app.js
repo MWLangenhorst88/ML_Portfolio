@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const back = require('express-back');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');

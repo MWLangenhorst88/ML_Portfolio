@@ -1,82 +1,75 @@
 const express = require('express');
 const session = require('express-session');
+const back = require('express-back');
 const router = express.Router();
 
 const randomString = [
   "Web Designer/Developer by day. Asleep by night.",
-  "Let me help with your website development today!",
+  "Let me help with your website needs!",
   "I Node how to Express myself. JS.",
   "Hello, development world!",
-  "Need a developer for your team? Hire me!",
+  "Need a Developer for your team? Contact me!",
   "I also dabble in Graphic Design!",
   "4:04 am. Sleep Not Found.",
   "My portfolio is MEAN.",
+  "; can change everything."
 ];
 
 router.get('/', function(req, res, next) {
   let dmToggle = checkDarkMode(req, res, next);
 
   // Generate random number up to 10
-  const index = Math.floor((Math.random() * 8));
+  const index = Math.floor((Math.random() * 9));
   const pickString = randomString[index];
 
-  res.render('index', {
-    headerLogo: dmToggle.headerLogo,
-    imageClass: 'logo-s',
-    mainLogo: dmToggle.mainLogo,
-    title: 'Mark Langenhorst Portfolio',
-    randomString: pickString,
-    bodyClass: dmToggle.bodyClass,
-    navbarClass: dmToggle.navbarClass,
-    dmBtn: dmToggle.button,
-    facebook: dmToggle.facebook,
-    twitter: dmToggle.twitter,
-    linkedin: dmToggle.linkedin,
-    google: dmToggle.google,
-  });
+  renderView(req, res, next,
+    'Mark Langenhorst Portfolio',
+    'index',
+    pickString);
 });
 
 router.get('/portfolio', function(req, res, next) {
   let dmToggle = checkDarkMode(req, res, next);
-
-  res.render('portfolio', {
-    headerLogo: dmToggle.mainLogo,
-    imageClass: 'logo',
-    title: 'Portfolio',
-    bodyClass: dmToggle.bodyClass,
-    navbarClass: dmToggle.navbarClass,
-    dmBtn: dmToggle.button,
-    facebook: dmToggle.facebook,
-    twitter: dmToggle.twitter,
-    linkedin: dmToggle.linkedin,
-    google: dmToggle.google,
-  });
+  renderView(req, res, next,
+    'Portfolio',
+    'portfolio');
 });
 
 router.get('/resume', function(req, res, next) {
   let dmToggle = checkDarkMode(req, res, next);
 
-  res.render('Resume', {
-    headerLogo: dmToggle.mainLogo,
-    imageClass: 'logo',
-    title: 'Resume',
-    bodyClass: dmToggle.bodyClass,
-    navbarClass: dmToggle.navbarClass,
-    dmBtn: dmToggle.button,
-    facebook: dmToggle.facebook,
-    twitter: dmToggle.twitter,
-    linkedin: dmToggle.linkedin,
-    google: dmToggle.google,
-  });
+  renderView(req, res, next,
+    'Resume',
+    'resume');
 });
 
 router.get('/darkMode', function(req, res, next) {
   // Generate random number up to 10
-  const index = Math.floor((Math.random() * 8));
+  const index = Math.floor((Math.random() * 9));
   const pickString = randomString[index];
 
-  let dmToggle = req.session;
+  pathArray = req.header('Referer').split('/');
+  let prevTitle = '';
+  let pathString = '/';
 
+  switch (pathArray[3]) {
+    case 'resume':
+      prevTitle = 'Resume';
+      pathString = 'resume';
+      break;
+
+    case 'portfolio':
+      prevTitle = 'Portfolio';
+      pathString = 'resume';
+      break;
+
+    default:
+      prevTitle = 'Dark Mode Toggled!';
+      pathString = 'index';
+      break;
+  }
+
+  let dmToggle = req.session;
   if (dmToggle.DarkModeOn === true){
     dmToggle.DarkModeOn = false;
   } else {
@@ -85,20 +78,10 @@ router.get('/darkMode', function(req, res, next) {
 
   dmToggle = checkDarkMode(req, res, next);
 
-  res.render('index', {
-    headerLogo: dmToggle.headerLogo,
-    imageClass: 'logo-s',
-    mainLogo: dmToggle.mainLogo,
-    title: 'Mark Langenhorst Portfolio',
-    randomString: pickString,
-    bodyClass: dmToggle.bodyClass,
-    navbarClass: dmToggle.navbarClass,
-    dmBtn: dmToggle.button,
-    facebook: dmToggle.facebook,
-    twitter: dmToggle.twitter,
-    linkedin: dmToggle.linkedin,
-    google: dmToggle.google,
-  });
+  renderView(req, res, next,
+    prevTitle,
+    pathString,
+    pickString);
 });
 
 function checkDarkMode(req, res, next) {
@@ -125,6 +108,25 @@ function checkDarkMode(req, res, next) {
     dmToggle.google = './images/google.png';
   }
   return dmToggle;
+}
+
+function renderView(req, res, next, title, view, string){
+  let dmToggle = req.session;
+
+  res.render(view, {
+    headerLogo: dmToggle.headerLogo,
+    imageClass: 'logo-s',
+    mainLogo: dmToggle.mainLogo,
+    title: title,
+    randomString: string,
+    bodyClass: dmToggle.bodyClass,
+    navbarClass: dmToggle.navbarClass,
+    dmBtn: dmToggle.button,
+    facebook: dmToggle.facebook,
+    twitter: dmToggle.twitter,
+    linkedin: dmToggle.linkedin,
+    google: dmToggle.google,
+  });
 }
 
 module.exports = router;
