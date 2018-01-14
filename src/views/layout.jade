@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="shortcut icon" type="image/icon" href="./images/ML_icon.ico")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(class="#{bodyClass}")
+    nav(class="navbar navbar-inverse navbar-fixed-top #{navbarClass}")
+      div.container-fluid
+        div.navbar-header
+          button(type="button" class="navbar-toggle collapsed burger" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(href="/")
+            img(src="#{headerLogo}" alt="Mark Langenhorst" class="#{imageClass}")
+        div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+          ul(class="nav navbar-nav navbar-right")
+            li: a(href="/portfolio") Portfolio
+            li: a(href="/resume") Resume
+            li: a(href="/darkMode" title="Toggle Dark Mode")
+              img(src="#{dmBtn}")
+      
+    .background-color  
+      .container-fluid.gap
+        block content
+      
+  footer(class="#{bodyClass}")
+    .left
+      p All Rights Reserved
+    
+    .social-media
+      a(href="https://www.facebook.com/mwlangenhorst88" target="_blank")
+        img(src="#{facebook}").facebook
+      a(href="https://www.twitter.com/MarkLangenhorst" target="_blank")
+        img(src="#{twitter}").twitter
+      a(href="https://www.linkedin.com/in/mark-langenhorst-42888788/" target="_blank")
+        img(src="#{linkedin}").linkedin
+      a(href="https://plus.google.com/u/0/112671507176796602122" target="_blank")
+        img(src="#{google}").google
