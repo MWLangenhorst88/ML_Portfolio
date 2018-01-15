@@ -1,5 +1,5 @@
 # ML_Portfolio
-This portfolio is available on GitHub to showcase my past work and resume.
+This portfolio is available on GitHub to showcase my past work and resume
 
 ### Prerequisites
 ```npm```
@@ -18,7 +18,7 @@ If you would like to contribute to my portfolio:
    
 1. Fork my repo
 2. Make necessary changes or feedback
-3. Create a Pull Request, and I will review the changes.
+3. Create a Pull Request, and I will review the changes
 
 ### Author/Copyright
 &copy; Mark Langenhorst - 2018
