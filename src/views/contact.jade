@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .contain
+    h1= title
+    form
+        div.form-group
+            label(for='name') Full Name:
+            input#name.form-control(type='text', placeholder='First and Last Name' name='name' required)
+        div.form-group
+            label(for='email') Email:
+            input#email.form-control(type='email', placeholder='me@me.com' name='email' required)
+        div.form-group
+            label(for='number') Number:
+            input#number.form-control(type='text' placeholder="555-555-5555" name='number' required)
+        div.form-group
+            label(for='message') Message:
+            textarea#message.form-control(, placeholder='Any Questions or Comments are appreciated!' name='message')
+        button.btn.btn-primary(type='submit') Submit
+      
