@@ -2,4 +2,56 @@ extends layout
 
 block content
   .contain
-    h1= title
+    h1.name Mark Langenhorst
+    
+    div(class="contact-#{bodyClass}")
+      -each line in pageInfo.contact
+        p #{line}
+        
+    .bio
+      p #{pageInfo.bio}
+      
+    .resume-main
+      .skills
+        h2.skills-h2 Skills
+        .skillsLine
+          .skillsLang
+            -each skill in pageInfo.skills.skillsLang
+              p.skill #{skill}
+          .skillsLang2
+            -each skill in pageInfo.skills.skillsLang2
+              p.skill #{skill}
+          .skillsProg
+            -each skill in pageInfo.skills.skillsProg
+              p.skill #{skill}
+              
+      .education
+        h2.education-h2 Education
+        .educationSchool
+          -each school in pageInfo.education
+            h3.h3-main #{school.degree} -
+              span.major &nbsp;#{school.major}
+              p.top
+                a(href="#{school.link}" target="_blank") #{school.name}
+            p.caption #{school.duration}
+                
+      .experience
+        h2.experience-h2 Experience
+        .experiences
+          -each job in pageInfo.experience
+            h3.h3-main #{job.title} - #{job.duration}
+              p.top
+                a(href="#{job.link}" target="_blank") #{job.company} 
+                span.top | #{job.location}
+            .caption
+              -each duty in job.duties
+                p.duties #{duty}      
+          
+      .volunteer
+        h2.volunteer-h2 Volunteering
+        .volunteers
+          h3.h3-main #{pageInfo.volunteer.title} - #{pageInfo.volunteer.duration}
+            p.top
+              a(href="#{pageInfo.volunteer.link}" target="_blank") #{pageInfo.volunteer.organization}
+          
+    .gap-b

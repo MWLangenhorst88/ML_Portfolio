@@ -2,6 +2,14 @@
   font-family: "Aero Matics";
   src: url('../fonts/Aero-Matics.TTF');
 }
+@font-face {
+  font-family: "Aero Matics Bold";
+  src: url('../fonts/Aero-Matics_Bold.TTF');
+}
+@font-face {
+  font-family: "Aero Matics Italic";
+  src: url('../fonts/Aero-Matics_Italic.TTF');
+}
 body{
   font: 16px Helvetica, Arial, sans-serif;
 }
@@ -9,8 +17,7 @@ h1{
   font: 40px "Aero Matics";
 }
 h2{
-  font: 25px "Aero Matics";
-  padding-top: 25px;
+  font: 30px "Aero Matics";
 }
 footer{
   font: 14px Helvetica, Arial, sans-serif;
@@ -53,6 +60,9 @@ footer{
 .gap{
   margin-top: 100px;
 }
+.gap-b{
+  margin-bottom: 50px;
+}
 .dark a, .light a{
   color: #0094ff;
 }
@@ -91,11 +101,62 @@ footer{
 .logo-s{
   height: 75px;
 }
-.randomString{
-  font-style: italic;
+h1.randomString{
+  font: 25px "Aero Matics Italic";
 }
 .contain{
   margin: 25px 150px;
+}
+.name{
+  float: left;
+}
+.contact-dark{
+  text-align: right;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 15px;
+}
+.contact-light{
+  text-align: right;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #000;
+}
+.bio{
+  text-align: center;
+  margin: 25px;
+}
+.skills, .education, .experience, .volunteer{
+  display: flex;
+  margin: 50px;
+}
+.skills-h2, .education-h2, .experience-h2, .volunteer-h2{
+  width: 200px;
+}
+.skillsLine{
+  display: flex;
+  flex-direction: row;
+}
+.skillsLine, .educationSchool, .experiences, .volunteers{
+  border-left: 5px solid #0094ff;
+}
+.skillsLang, .skillsLang2, .skillsProg{
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.skill{
+  margin: 5px 50px;
+}
+.h3-main{
+  font: "Aero Matics Bold";
+  margin: 5px 50px;
+}
+.top{
+  margin-top: 6px;
+}
+.caption{
+  font-style: italic;
+  padding: 0 0 40px 50px;
 }
 .picture{
   float: right;
@@ -133,23 +194,53 @@ footer{
 .google:hover{
   background-color: #DC483C;
 }
-@media screen and (max-width: 1000px) {
+.btn-primary{
+  background-color: #0094ff;
+}
+@media screen and (max-width: 1375px) {
+  .contain {
+    margin: 25px 5px;
+  }
+}
+@media screen and (max-width: 1078px) {
   .picture{
     display: none;
   }
   .contain{
+    margin: 0;
+  }
+}
+@media screen and (max-width: 1026px) {
+  .skills-h2, .experience-h2, .education-h2, .volunteer-h2{
+    padding: 0;
+    border: 0;
+  }
+  .skills, .skillsLine, .education, .experience, .volunteer{
+    display: flex;
+    flex-direction: column;
+  }
+  .skills, .education, .experience, .volunteer{
+    margin: 2px;
+  }
+  .contain{
     margin: 5px;
+  }
+}
+@media screen and (max-width: 565px) {
+  .name{
+    float: none;
+    text-align: right;
   }
 }
 @media screen and (max-width: 525px) {
   footer{
     flex-direction: column;
   }
+  .gap-b{
+    margin-bottom: 75px;
+  }
   .center{
     order: 3;
-  }
-  .contain{
-    margin: 5px;
   }
   .main_name{
     display: block;

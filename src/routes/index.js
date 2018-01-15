@@ -3,9 +3,10 @@ const session = require('express-session');
 const back = require('express-back');
 const router = express.Router();
 const portInfo = require('../public/js/portfolio.js');
+const resInfo = require('../public/js/resume.js');
 
 const randomString = [
-  "Web Designer/Developer by day. Asleep by night.",
+  `Web Designer/Developer by day. \nAsleep by night.`,
   "Let me help with your website needs!",
   "I Node how to Express myself. JS.",
   "Hello, development world!",
@@ -44,7 +45,8 @@ router.get('/resume', function(req, res, next) {
 
   renderView(req, res, next,
     'Resume',
-    'resume');
+    'resume',
+    resInfo);
 });
 
 router.get('/contact', function(req, res, next) {
@@ -93,12 +95,18 @@ router.get('/darkMode', function(req, res, next) {
     dmToggle.DarkModeOn = true;
   }
 
+  if(pathString === 'portfolio'){
+    pageInfo = portInfo;
+  } else if(pathString === 'resume'){
+    pageInfo = resInfo;
+  }
+
   dmToggle = checkDarkMode(req, res, next);
 
   renderView(req, res, next,
     prevTitle,
     pathString,
-    portInfo,
+    pageInfo,
     pickString);
 });
 
