@@ -6,7 +6,6 @@ const lint = require('mocha-eslint');
 const paths = [
   'bot',
   'test/**/*.js',
-  'src/app.js',
 ];
 
 const options = {
