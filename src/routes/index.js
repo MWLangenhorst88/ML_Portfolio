@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const back = require('express-back');
 const router = express.Router();
 const portInfo = require('../public/js/portfolio.js');
 const resInfo = require('../public/js/resume.js');
@@ -95,6 +94,7 @@ router.get('/darkMode', function(req, res, next) {
     dmToggle.DarkModeOn = true;
   }
 
+  let pageInfo = '';
   if(pathString === 'portfolio'){
     pageInfo = portInfo;
   } else if(pathString === 'resume'){
