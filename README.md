@@ -8,6 +8,8 @@ This portfolio is available on GitHub to showcase my past work and resume
 
 ```npm install express-session```
 
+```npm install nodemon```
+
 ### Download/Clone to run Locally
 To download my portfolio and run it locally:
 
