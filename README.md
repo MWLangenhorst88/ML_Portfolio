@@ -4,6 +4,10 @@ This portfolio is available on GitHub to showcase my past work and resume
 ### Prerequisites
 ```npm```
 
+```node```
+
+```npm install -g nodemon```
+
 ### Download/Clone to run Locally
 To download my portfolio and run it locally:
 
