@@ -4,6 +4,10 @@ This portfolio is available on GitHub to showcase my past work and resume
 ### Prerequisites
 ```npm```
 
+```npm install express```
+
+```npm install express-session```
+
 ### Download/Clone to run Locally
 To download my portfolio and run it locally:
 
